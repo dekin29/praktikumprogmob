@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Praktikum</string>
+    <string name="text_sign_in">Masuk</string>
+    <string name="text_sign_in_subtitle">Selamat datang, \nsilahkan masuk untuk melanjutkan</string>
+    <string name="text_hint_nama_field">Nama</string>
+    <string name="text_hint_email_field">Email</string>
+    <string name="text_hint_password_field">Kata sandi</string>
+    <string name="text_hint_cpassword_field">Ulangi kata sandi</string>
+    <string name="text_btn_forgot_password">Lupa kata sandi</string>
+    <string name="text_btn_sign_in">Masuk</string>
+    <string name="text_or">----- Atau -----</string>
+    <string name="text_not_have_an_account">Belum memiliki akun? <b><font color='#039BE5'>Daftar</font></b></string>
+    <string name="text_sign_up_subtitle">Selamat datang, \nbergabunglah bersama kami</string>
+    <string name="text_sign_up_title">Daftar</string>
+    <string name="text_hint_confirm_password_field">Konfirmasi kata sandi</string>
+    <string name="text_privacy_and_policy">Dengan mendaftar Anda berarti menyetujui\n<b><font color='#039BE5'>Kebijakan</font></b> dan <b><font color='#039BE5'>Privasi</font></b></string>
+    <string name="text_btn_sign_up">Daftar</string>
+    <string name="text_have_an_account">Sudah memiliki akun? <b><font color='#039BE5'>Masuk</font></b></string>
+    <string name="title_activity_main2">Praktikum</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+</resources>
