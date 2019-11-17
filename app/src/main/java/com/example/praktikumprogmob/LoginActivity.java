@@ -3,6 +3,7 @@ package com.example.praktikumprogmob;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView tvRegister;
     ProgressDialog loading;
 
-
+    private SharedPreferences profile;
     Context mContext;
     BaseApiService mApiService;
 
@@ -43,6 +44,12 @@ public class LoginActivity extends AppCompatActivity {
         mContext = this;
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
         initComponents();
+        profile = getSharedPreferences("profile", Context.MODE_PRIVATE);
+        final Intent toMain = new Intent(LoginActivity.this, Main2Activity.class);
+        if(profile.contains("id")){
+            startActivity(toMain);
+            finish();
+        }
     }
 
     private void initComponents() {
@@ -54,8 +61,22 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-                requestLogin();
+                boolean anyError = false;
+                if (etEmail.getText().toString().equals("")){
+                    etEmail.setError("Email tidak boleh kosong");
+                    anyError = true;
+                }
+
+                if (etPassword.getText().toString().equals("")){
+                    etPassword.setError("Password tidak boleh kosong");
+                    anyError = true;
+                }
+
+                if(!anyError){
+                    loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                    requestLogin();
+                }
+
             }
         });
 
@@ -83,6 +104,14 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(mContext, "Berhasil Login", Toast.LENGTH_SHORT).show();
                                     int id = jsonRESULTS.getJSONObject("user").getInt("id");
                                     Log.d("debug","id : "+id);
+                                    //Save to SharedPreferences
+
+                                    SharedPreferences profile = getSharedPreferences( "profile", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor profileEditor = profile.edit();
+                                    profileEditor.putInt("id",id);
+//                                    profileEditor.putString("username" , USERNAME_USER);
+                                    profileEditor.apply();
+
                                     Intent intent = new Intent(mContext, Main2Activity.class);
                                     intent.putExtra("id", id);
                                     startActivity(intent);

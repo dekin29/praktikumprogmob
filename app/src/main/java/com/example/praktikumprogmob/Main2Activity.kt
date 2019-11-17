@@ -17,6 +17,8 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.support.v7.app.AlertDialog
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.Toast
 import com.example.praktikumprogmob.APIHelper.BaseApiService
 import com.example.praktikumprogmob.APIHelper.UtilsApi
@@ -56,7 +58,7 @@ class Main2Activity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_profile -> {
-                val profileFragment = ProfileFragment.newInstance()
+                val profileFragment = ProfileFragment.newInstance(1)
                 openFragment(profileFragment)
                 return@OnNavigationItemSelectedListener true
             }
@@ -103,42 +105,6 @@ class Main2Activity : AppCompatActivity() {
         menu.getItem(position).isChecked = true
 
     }
-
-//    private fun getDetail() {
-//        mApiService.detailUser(1)
-//                .enqueue(object : Callback<ResponseBody> {
-//                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-//                        if (response.isSuccessful) {
-//                            try {
-//                                val jsonRESULTS = JSONObject(response.body()!!.string())
-//                                if (jsonRESULTS.getString("error") == "false") {
-//                                    // Jika login berhasil maka data nama yang ada di response API
-//                                    // akan diparsing ke activity selanjutnya.
-//                                    Toast.makeText(mContext, "Berhasil Login", Toast.LENGTH_SHORT).show()
-//                                    val id = jsonRESULTS.getJSONObject("user").getInt("id")
-//                                    Log.d("debug", "id : $id")
-//                                    val intent = Intent(mContext, Main2Activity::class.java)
-//                                    intent.putExtra("id", id)
-//                                    startActivity(intent)
-//                                    finish()
-//                                } else {
-//                                    // Jika login gagal
-//                                    val error_message = jsonRESULTS.getString("error_msg")
-//                                    Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show()
-//                                }
-//                            } catch (e: JSONException) {
-//                                e.printStackTrace()
-//                            } catch (e: IOException) {
-//                                e.printStackTrace()
-//                            }
-//                        }
-//                    }
-//
-//                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-//                        Log.e("debug", "onFailure: ERROR > $t")
-//                    }
-//                })
-//    }
 
 
 }

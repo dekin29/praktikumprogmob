@@ -124,6 +124,37 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password"/>
 
             <TextView
+                android:id="@+id/tv_or"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_default"
+                android:fontFamily="@font/nunito_sans_reguler"
+                android:text="@string/text_or"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/text_subtitle_size"
+                app:layout_constraintEnd_toEndOf="@+id/btn_sign_in"
+                app:layout_constraintStart_toStartOf="@+id/btn_sign_in"
+                app:layout_constraintTop_toBottomOf="@+id/btn_sign_in" />
+
+            <Button
+                android:id="@+id/btn_sign_in_google"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_auth"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginEnd="@dimen/margin_auth"
+                android:paddingLeft="20dp"
+                android:drawableStart="@drawable/ic_google"
+                android:background="@drawable/bg_auth_btn"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/google_account"
+                android:textColor="@color/colorTextORIcon"
+                android:textSize="@dimen/text_btn_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_or"
+                app:layout_constraintTop_toBottomOf="@+id/tv_or"/>
+
+            <TextView
                 android:id="@+id/tv_not_have_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
