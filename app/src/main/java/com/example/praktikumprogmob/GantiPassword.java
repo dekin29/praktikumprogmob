@@ -26,11 +26,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
-    EditText etEmail;
+public class GantiPassword extends AppCompatActivity {
+    EditText etOld;
     EditText etPassword;
-    Button btnLogin;
-    TextView tvRegister;
+    EditText etRepassword;
+    Button btnGanti;
     ProgressDialog loading;
 
     private SharedPreferences profile;
@@ -40,84 +40,71 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        mContext = this;
+        setContentView(R.layout.ganti_password);
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
-        initComponents();
-        profile = getSharedPreferences("profile", Context.MODE_PRIVATE);
-        final Intent toMain = new Intent(LoginActivity.this, Main2Activity.class);
-        if(profile.contains("id")){
-            startActivity(toMain);
-            finish();
-        }
-    }
+        mContext = this;
 
-    private void initComponents() {
-        etEmail = (EditText) findViewById(R.id.et_email_field);
+        etOld = (EditText) findViewById(R.id.et_password_old_field);
         etPassword = (EditText) findViewById(R.id.et_password_field);
-        btnLogin = (Button) findViewById(R.id.btn_sign_in);
-        tvRegister = (TextView) findViewById(R.id.tv_not_have_account);
+        etRepassword = (EditText) findViewById(R.id.et_cpassword_field);
+        btnGanti = (Button) findViewById(R.id.btn_ganti_password);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
+        getSupportActionBar().setTitle("Ganti Password");
+
+        btnGanti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean anyError = false;
-                if (etEmail.getText().toString().equals("")){
-                    etEmail.setError("Email tidak boleh kosong");
+                if (etOld.getText().toString().equals("")){
+                    etOld.setError("Field tidak boleh kosong");
                     anyError = true;
                 }
 
                 if (etPassword.getText().toString().equals("")){
-                    etPassword.setError("Password tidak boleh kosong");
+                    etPassword.setError("Field Baru tidak boleh kosong");
+                    anyError = true;
+                }
+
+                if (etRepassword.getText().toString().equals("")){
+                    etRepassword.setError("Field tidak boleh kosong");
                     anyError = true;
                 }
 
                 if(!anyError){
                     loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-                    requestLogin();
+                    gantiPasswordMethod();
                 }
 
             }
         });
 
-        tvRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mContext, RegisterActivity.class));
-                finish();
-            }
-        });
+
     }
 
-    private void requestLogin(){
-        mApiService.loginRequest(etEmail.getText().toString(), etPassword.getText().toString())
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
+    private void gantiPasswordMethod(){
+        SharedPreferences profile = getSharedPreferences( "profile", Context.MODE_PRIVATE);
+        int id = profile.getInt("id",0);
+        Log.d("debug","shared : "+id+ etOld.getText().toString()+etPassword.getText().toString()+etRepassword.getText().toString());
+        mApiService.gantiPassword(id,etOld.getText().toString(), etPassword.getText().toString(), etRepassword.getText().toString())
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         if (response.isSuccessful()){
-                            loading.dismiss();
                             try {
                                 JSONObject jsonRESULTS = new JSONObject(response.body().string());
                                 if (jsonRESULTS.getString("error").equals("false")){
-                                    // Jika login berhasil maka data nama yang ada di response API
-                                    // akan diparsing ke activity selanjutnya.
-                                    Toast.makeText(mContext, "Berhasil Login", Toast.LENGTH_SHORT).show();
-                                    int id = jsonRESULTS.getJSONObject("user").getInt("id");
-                                    Log.d("debug","id : "+id);
-                                    //Save to SharedPreferences
-
-                                    SharedPreferences profile = getSharedPreferences( "profile", Context.MODE_PRIVATE);
-                                    SharedPreferences.Editor profileEditor = profile.edit();
-                                    profileEditor.putInt("id",id);
-//                                    profileEditor.putString("username" , USERNAME_USER);
-                                    profileEditor.apply();
-
-                                    Intent intent = new Intent(mContext, Main2Activity.class);
-                                    intent.putExtra("id", id);
-                                    startActivity(intent);
+                                    loading.dismiss();
+                                    Toast.makeText(mContext, "Password Berhasil diubah", Toast.LENGTH_SHORT).show();
                                     finish();
                                 } else {
-                                    // Jika login gagal
                                     String error_message = jsonRESULTS.getString("error_msg");
                                     Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
                                 }
@@ -126,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                        } else {
+                        } else{
                             loading.dismiss();
                         }
                     }
@@ -138,4 +125,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
 }
+

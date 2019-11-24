@@ -12,9 +12,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.example.praktikumprogmob.APIHelper.BaseApiService
-import com.example.praktikumprogmob.LoginActivity
+import com.example.praktikumprogmob.APIHelper.UtilsApi
+import com.example.praktikumprogmob.Auth.LoginActivity
+import com.example.praktikumprogmob.EditProfile
+import com.example.praktikumprogmob.GantiPassword
+import com.example.praktikumprogmob.Main2Activity
+import com.example.praktikumprogmob.Model.User
+import com.example.praktikumprogmob.Model.UserResult
 import com.example.praktikumprogmob.R
-import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.fragment_profile.*
 import okhttp3.ResponseBody
 import org.json.JSONException
 import org.json.JSONObject
@@ -24,23 +30,43 @@ import retrofit2.Response
 import java.io.IOException
 
 class ProfileFragment : Fragment() {
-    private var profile: SharedPreferences? = null
-    val mContext = this
     internal lateinit var mApiService: BaseApiService
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         val tvNama = view.findViewById<TextView>(R.id.tv_name)
-        val tvEmail = view.findViewById<TextView>(R.id.tvEmail)
-        val tvStatus = view.findViewById<TextView>(R.id.tvStatus)
+        val tvEmail = view.findViewById<TextView>(R.id.tv_email)
+        val btnEdit = view.findViewById<Button>(R.id.btn_edit_profile)
+        val btnPassword = view.findViewById<Button>(R.id.btn_ganti_password)
         val btnLogout = view.findViewById<Button>(R.id.btn_logout)
 
-        val id = arguments?.getInt(ARG_ID)
         val profile = this.activity!!.getSharedPreferences("profile", Context.MODE_PRIVATE)
-        val id2 = profile.getInt("id",0)
+        val token = "Bearer "+profile.getString("access_token",null)
 
-        Log.d("debug","idprof : "+id+"idsf :"+id2)
+        mApiService = UtilsApi.getAPIService()
+
+        val user = mApiService.getUser(token)
+        user.enqueue(object : Callback<User>{
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                val nama = response!!.body()!!.name
+                val email = response!!.body()!!.email
+                tvNama.setText(nama)
+                tvEmail.setText(email)
+            }
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                Log.d("debug","GAGAL")
+            }
+        })
+
+        btnEdit.setOnClickListener {
+            val intent = Intent (getActivity(), EditProfile::class.java)
+            activity!!.startActivity(intent)
+        }
+
+        btnPassword.setOnClickListener {
+            val intent = Intent (getActivity(), GantiPassword::class.java)
+            activity!!.startActivity(intent)
+        }
 
         btnLogout.setOnClickListener {
             val profile = this.activity!!.getSharedPreferences("profile", Context.MODE_PRIVATE)
@@ -50,7 +76,6 @@ class ProfileFragment : Fragment() {
             val intent = Intent (getActivity(), LoginActivity::class.java)
             activity!!.startActivity(intent)
             activity!!.finish()
-
         }
 
         return view
@@ -58,47 +83,14 @@ class ProfileFragment : Fragment() {
 
 
     companion object {
-        const val ARG_ID = "id"
-
-        fun newInstance(id: Int): ProfileFragment {
+        fun newInstance(): ProfileFragment {
             val fragment = ProfileFragment()
-            val bundle = Bundle().apply {
-                putInt(ARG_ID, id)
-            }
-
-            fragment.arguments = bundle
+//            val bundle = Bundle().apply {
+//            }
+//            fragment.arguments = bundle
 
             return fragment
         }
-
-    }
-
-    private fun getDetail(id: Int?) {
-        mApiService.detailUser(id)
-                .enqueue(object : Callback<ResponseBody> {
-                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                        if (response.isSuccessful) {
-                            try {
-                                val jsonRESULTS = JSONObject(response.body()!!.string())
-                                val id = jsonRESULTS.getJSONObject("user").getInt("id")
-                                val nama = jsonRESULTS.getJSONObject("user").getString("name")
-                                val email = jsonRESULTS.getJSONObject("user").getString("email")
-
-                                Log.d("debug","nama :"+ nama + "email : " + email)
-
-                            } catch (e: JSONException) {
-                                e.printStackTrace()
-                            } catch (e: IOException) {
-                                e.printStackTrace()
-                            }
-                        }
-                    }
-
-                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        Log.e("debug", "onFailure: ERROR > $t")
-                    }
-                })
-
 
     }
 

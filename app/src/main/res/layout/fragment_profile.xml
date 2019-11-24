@@ -48,35 +48,26 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15sp"
                 android:fontFamily="sans-serif-light"
-                android:text="Joey Tribbiani"
+                android:text="Loading..."
                 android:textColor="@color/white"
                 android:textSize="32sp" />
 
             <TextView
-                android:id="@+id/tv_address"
+                android:id="@+id/tv_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_name"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="sans-serif"
-                android:text="new york, usa"
-                android:textAllCaps="true"
+                android:text="Loading..."
+                android:textAllCaps="false"
                 android:textColor="@color/address"
                 android:textSize="14sp" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_settings" />
 
         </RelativeLayout>
 
-        <!--Follow-->
+        <!--Button-->
         <LinearLayout
             android:id="@+id/linlay1"
             android:layout_width="match_parent"
@@ -84,225 +75,63 @@
             android:layout_below="@id/rellay1"
             android:orientation="horizontal">
 
-            <RelativeLayout
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@color/followersBg"
-                android:gravity="center"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp">
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/activity_vertical_margin">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="453K"
-                        android:textColor="@color/white"
-                        android:textSize="25sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="followers"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="13sp" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@color/followingBg"
-                android:gravity="center"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="873"
-                        android:textColor="@color/white"
-                        android:textSize="25sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="following"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="13sp" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <!--Detail-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/linlay1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <!--email-->
-                <LinearLayout
+                <Button
+                    android:id="@+id/btn_edit_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginStart="@dimen/margin_auth"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="@dimen/margin_auth"
+                    android:background="@drawable/bg_auth_btn"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:text="@string/edit_profile"
+                    android:textColor="@color/colorTextORIcon"
+                    android:textSize="@dimen/text_btn_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Email"
-                        android:textColor="@color/headings"
-                        android:textSize="13sp" />
-
-                    <TextView
-                        android:id="@+id/tvEmail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="joey@sharenofood.com"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/grey" />
-
-                </LinearLayout>
-                <!--phone-->
-                <LinearLayout
+                <Button
+                    android:id="@+id/btn_ganti_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="vertical">
+                    android:layout_marginStart="@dimen/margin_auth"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_marginEnd="@dimen/margin_auth"
+                    android:background="@drawable/bg_auth_btn"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:text="@string/ganti_password"
+                    android:textColor="@color/colorTextORIcon"
+                    android:textSize="@dimen/text_btn_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/btn_edit_profile"
+                    app:layout_constraintTop_toBottomOf="@id/btn_edit_profile"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Phone"
-                        android:textColor="@color/headings"
-                        android:textSize="13sp" />
 
-                    <TextView
-                        android:id="@+id/tvStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="+1-202-555-0157"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/grey" />
-
-                </LinearLayout>
-                <!--twitter-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Twitter"
-                        android:textColor="@color/headings"
-                        android:textSize="13sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="dekinbro"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/grey" />
-
-                </LinearLayout>
-                <!--facebook-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Facebook"
-                        android:textColor="@color/headings"
-                        android:textSize="13sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="facebook.com/joeytrib"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@color/grey" />
-
-                </LinearLayout>
-                <!--logout-->
                 <Button
                     android:id="@+id/btn_logout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Logout" />
+                    android:layout_marginStart="@dimen/margin_auth"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_marginEnd="@dimen/margin_auth"
+                    android:background="@drawable/bg_auth_btn"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:text="@string/logout"
+                    android:textColor="@color/colorTextORIcon"
+                    android:textSize="@dimen/text_btn_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/btn_ganti_password"
+                    app:layout_constraintTop_toBottomOf="@id/btn_ganti_password"/>
 
+            </android.support.constraint.ConstraintLayout>
 
-            </LinearLayout>
-
-        </RelativeLayout>
+        </LinearLayout>
 
     </RelativeLayout>
 

@@ -1,9 +1,14 @@
 package com.example.praktikumprogmob.APIHelper;
 
+import com.example.praktikumprogmob.Model.User;
+import com.example.praktikumprogmob.Model.UserResult;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface BaseApiService {
@@ -21,9 +26,23 @@ public interface BaseApiService {
                                        @Field("password") String password,
                                        @Field("c_password") String cpassword);
 
+    @POST("details")
+    Call<User> getUser(@Header("Authorization") String authHeader);
 
-    // Fungsi detail user profile
     @FormUrlEncoded
-    @POST("detail")
-    Call<ResponseBody> detailUser(@Field("id") Integer id);
+    @POST("gantipassword")
+    Call<ResponseBody> gantiPassword(@Field("id") Integer id,
+                                     @Field("oldpassword") String old_password,
+                                     @Field("password") String password,
+                                     @Field("c_password") String cpassword);
+
+    @FormUrlEncoded
+    @POST("editprofile")
+    Call<ResponseBody> editProfile(@Field("id") Integer id,
+                                     @Field("name") String name,
+                                     @Field("email") String email,
+                                     @Field("notelp") String notelp);
+
 }
+
+

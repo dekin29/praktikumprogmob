@@ -21,4 +21,8 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_profile">Profile</string>
     <string name="google_account">Google Account</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="ganti_password">Ganti Password</string>
+    <string name="logout">Logout</string>
+    <string name="telepon">Telepon</string>
 </resources>

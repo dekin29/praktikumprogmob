@@ -22,6 +22,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.praktikumprogmob.APIHelper.BaseApiService
 import com.example.praktikumprogmob.APIHelper.UtilsApi
+import com.example.praktikumprogmob.Model.User
 import okhttp3.ResponseBody
 import org.json.JSONException
 import org.json.JSONObject
@@ -36,8 +37,6 @@ import java.io.IOException
 
 class Main2Activity : AppCompatActivity() {
 
-    val homeFragment = HomeFragment.newInstance()
-    val mContext = this
     internal lateinit var mApiService: BaseApiService
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -58,7 +57,7 @@ class Main2Activity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_profile -> {
-                val profileFragment = ProfileFragment.newInstance(1)
+                val profileFragment = ProfileFragment.newInstance()
                 openFragment(profileFragment)
                 return@OnNavigationItemSelectedListener true
             }
@@ -105,6 +104,8 @@ class Main2Activity : AppCompatActivity() {
         menu.getItem(position).isChecked = true
 
     }
+
+
 
 
 }

@@ -8,6 +8,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.praktikumprogmob.Auth.LoginActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override

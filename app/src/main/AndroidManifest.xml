@@ -12,6 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".GantiPassword"
+            android:theme="@style/ActionBar">
+        </activity>
+        <activity
+            android:name=".EditProfile"
+            android:theme="@style/ActionBar" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +29,9 @@
         <activity
             android:name=".Main2Activity"
             android:label="@string/app_name"
-            android:theme="@style/ActionBar"></activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity">
-        </activity>
+            android:theme="@style/ActionBar" />
+        <activity android:name=".Auth.RegisterActivity" />
+        <activity android:name=".Auth.LoginActivity" />
     </application>
 
 </manifest>

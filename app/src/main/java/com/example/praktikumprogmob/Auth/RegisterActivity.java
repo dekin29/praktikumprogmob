@@ -1,4 +1,4 @@
-package com.example.praktikumprogmob;
+package com.example.praktikumprogmob.Auth;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.praktikumprogmob.APIHelper.BaseApiService;
 import com.example.praktikumprogmob.APIHelper.UtilsApi;
+import com.example.praktikumprogmob.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

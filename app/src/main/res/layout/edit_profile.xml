@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9E7DD"
+    tools:context=".EditProfile">
+
+    <RelativeLayout
+        android:id="@+id/rellay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/imgUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/circle_border">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="9dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/circle"
+                android:padding="3dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_user" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="120dp"
+            android:layout_marginTop="110dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_settings"
+            android:background="@drawable/bg_auth_btn"/>
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_nama_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_auth_email_field"
+        android:layout_marginStart="@dimen/margin_auth"
+        android:layout_marginEnd="@dimen/margin_auth"
+        android:padding="@dimen/padding_field"
+        android:background="@drawable/bg_auth_field"
+        android:drawablePadding="@dimen/padding_field"
+        android:drawableStart="@drawable/ic_mail"
+        android:fontFamily="@font/nunito_sans_reguler"
+        android:hint="@string/text_hint_nama_field"
+        android:inputType="text"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="@dimen/text_body_size"
+        android:textColorHint="@color/colorSecondaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rellay1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/et_email_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginStart="@dimen/margin_auth"
+        android:layout_marginEnd="@dimen/margin_auth"
+        android:padding="@dimen/padding_field"
+        android:background="@drawable/bg_auth_field"
+        android:drawablePadding="@dimen/padding_field"
+        android:drawableStart="@drawable/ic_mail"
+        android:fontFamily="@font/nunito_sans_reguler"
+        android:hint="@string/text_hint_email_field"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="@dimen/text_body_size"
+        android:textColorHint="@color/colorSecondaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_nama_field"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/et_notelp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginStart="@dimen/margin_auth"
+        android:layout_marginEnd="@dimen/margin_auth"
+        android:background="@drawable/bg_auth_field"
+        android:drawableStart="@drawable/ic_password"
+        android:drawablePadding="@dimen/padding_field"
+        android:fontFamily="@font/nunito_sans_reguler"
+        android:hint="@string/telepon"
+        android:inputType="numberDecimal"
+        android:padding="@dimen/padding_field"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorSecondaryText"
+        android:textSize="@dimen/text_body_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_email_field"
+        tools:ignore="Autofill" />
+
+    <!--<EditText-->
+        <!--android:id="@+id/et_cpassword_field"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/margin_default"-->
+        <!--android:layout_marginStart="@dimen/margin_auth"-->
+        <!--android:layout_marginEnd="@dimen/margin_auth"-->
+        <!--android:background="@drawable/bg_auth_field"-->
+        <!--android:drawableStart="@drawable/ic_password"-->
+        <!--android:drawablePadding="@dimen/padding_field"-->
+        <!--android:fontFamily="@font/nunito_sans_reguler"-->
+        <!--android:hint="@string/text_hint_cpassword_field"-->
+        <!--android:inputType="textPassword"-->
+        <!--android:padding="@dimen/padding_field"-->
+        <!--android:textColor="@color/colorPrimaryText"-->
+        <!--android:textColorHint="@color/colorSecondaryText"-->
+        <!--android:textSize="@dimen/text_body_size"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/et_password_field"-->
+        <!--tools:ignore="Autofill" />-->
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_auth"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="@dimen/margin_auth"
+        android:background="@drawable/bg_auth_btn"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="Simpan Perubahan"
+        android:textColor="@color/colorTextORIcon"
+        android:textSize="@dimen/text_btn_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_notelp" />
+
+</android.support.constraint.ConstraintLayout>
