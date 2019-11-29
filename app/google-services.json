@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "290438113713",
-    "firebase_url": "https://praktikumprogmob8.firebaseio.com",
-    "project_id": "praktikumprogmob8",
-    "storage_bucket": "praktikumprogmob8.appspot.com"
+    "project_number": "37699917945",
+    "firebase_url": "https://progmob-7cf11.firebaseio.com",
+    "project_id": "progmob-7cf11",
+    "storage_bucket": "progmob-7cf11.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:290438113713:android:e0a611760af0b516217590",
+        "mobilesdk_app_id": "1:37699917945:android:fe3159da02eea5dc85dca8",
         "android_client_info": {
           "package_name": "com.example.praktikumprogmob"
         }
       },
       "oauth_client": [
         {
-          "client_id": "290438113713-mnibaqubbcojbl0gbs8g8kvuelfa4gge.apps.googleusercontent.com",
+          "client_id": "37699917945-ka4popg3i14hl09pkvjcholarnru6lqj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.praktikumprogmob",
+            "certificate_hash": "a6a9dca711cdfc8bfab0656d9bb8542d1c91dcf8"
+          }
+        },
+        {
+          "client_id": "37699917945-i7g7l0k3g7m6nj0rtldrime01h8oe6ao.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCJxp1ZOLVeZXM_CFthSehE2ljgxdItGuY"
+          "current_key": "AIzaSyAihwJ9_KMO-ToM_Qt8DvGwBWJ3rMnaJwE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "290438113713-mnibaqubbcojbl0gbs8g8kvuelfa4gge.apps.googleusercontent.com",
+              "client_id": "37699917945-i7g7l0k3g7m6nj0rtldrime01h8oe6ao.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
