@@ -75,7 +75,7 @@
             android:layout_below="@id/rellay1"
             android:orientation="horizontal">
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/activity_vertical_margin">
@@ -129,7 +129,7 @@
                     app:layout_constraintStart_toStartOf="@id/btn_ganti_password"
                     app:layout_constraintTop_toBottomOf="@id/btn_ganti_password"/>
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
