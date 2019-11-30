@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.praktikumprogmob.APIHelper.BaseApiService;
 import com.example.praktikumprogmob.APIHelper.UtilsApi;
-import com.example.praktikumprogmob.Main2Activity;
+import com.example.praktikumprogmob.MainActivity;
 import com.example.praktikumprogmob.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
         initComponents();
         profile = getSharedPreferences("profile", Context.MODE_PRIVATE);
-        final Intent toMain = new Intent(LoginActivity.this, Main2Activity.class);
+        final Intent toMain = new Intent(LoginActivity.this, MainActivity.class);
         if(profile.contains("id")){
             startActivity(toMain);
             finish();
@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(mContext, Main2Activity.class);
+                            Intent intent = new Intent(mContext, MainActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
@@ -202,7 +202,7 @@ public class LoginActivity extends AppCompatActivity {
                                     profileEditor.putString("access_token" , token);
                                     profileEditor.apply();
 
-                                    Intent intent = new Intent(mContext, Main2Activity.class);
+                                    Intent intent = new Intent(mContext, MainActivity.class);
                                     intent.putExtra("id", id);
                                     startActivity(intent);
                                     finish();
