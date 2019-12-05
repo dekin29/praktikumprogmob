@@ -1,5 +1,6 @@
 package com.example.praktikumprogmob.APIHelper;
 
+import com.example.praktikumprogmob.Model.PostResult;
 import com.example.praktikumprogmob.Model.User;
 
 import okhttp3.MultipartBody;
@@ -8,6 +9,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -29,9 +31,6 @@ public interface BaseApiService {
                                        @Field("c_password") String cpassword);
 
     @POST("api/details")
-    Call<User> getUser(@Header("Authorization") String authHeader);
-
-    @POST("api/details")
     Call<User> detailUser();
 
     @FormUrlEncoded
@@ -49,6 +48,10 @@ public interface BaseApiService {
                                    @Part("notelp") RequestBody notelp,
                                    @Part MultipartBody.Part image,
                                    @Part("filename") RequestBody filename);
+
+    @GET("api/allpost")
+    Call<PostResult> allPost();
+
 
 }
 
