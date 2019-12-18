@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E9E7DD"
+            tools:context="com.example.praktikumprogmob.UpdatePost">
+
+            <RelativeLayout
+                android:id="@+id/rellay1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:id="@+id/imgUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle_border"
+                    android:layout_marginStart="@dimen/margin_auth"
+                    android:layout_marginEnd="@dimen/margin_auth">
+
+                    <ImageView
+                        android:id="@+id/img_post"
+                        android:layout_width="fill_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/bg_auth_field" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/et_judul"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:lines="2"
+                android:layout_marginTop="@dimen/margin_auth"
+                android:layout_marginStart="@dimen/margin_auth"
+                android:layout_marginEnd="@dimen/margin_auth"
+                android:padding="@dimen/padding_field"
+                android:background="@drawable/bg_auth_field"
+                android:drawablePadding="@dimen/padding_field"
+                android:drawableStart="@drawable/ic_mail"
+                android:fontFamily="@font/nunito_sans_reguler"
+                android:hint="Title"
+                android:inputType="text|textMultiLine"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_body_size"
+                android:textColorHint="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rellay1"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/et_deskripsi"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:lines="5"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginStart="@dimen/margin_auth"
+                android:layout_marginEnd="@dimen/margin_auth"
+                android:padding="@dimen/padding_field"
+                android:background="@drawable/bg_auth_field"
+                android:drawablePadding="@dimen/padding_field"
+                android:drawableStart="@drawable/ic_mail"
+                android:fontFamily="@font/nunito_sans_reguler"
+                android:hint="Deskripsi"
+                android:inputType="text|textMultiLine"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_body_size"
+                android:textColorHint="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_judul"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/et_kontak"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:lines="4"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginStart="@dimen/margin_auth"
+                android:layout_marginEnd="@dimen/margin_auth"
+                android:background="@drawable/bg_auth_field"
+                android:drawableStart="@drawable/ic_password"
+                android:drawablePadding="@dimen/padding_field"
+                android:fontFamily="@font/nunito_sans_reguler"
+                android:hint="Kontak"
+                android:inputType="text|textMultiLine"
+                android:padding="@dimen/padding_field"
+                android:textColor="@color/colorPrimaryText"
+                android:textColorHint="@color/colorSecondaryText"
+                android:textSize="@dimen/text_body_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_deskripsi"
+                tools:ignore="Autofill" />
+
+            <Button
+                android:id="@+id/btn_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_auth"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginEnd="@dimen/margin_auth"
+                android:background="@drawable/bg_auth_btn"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="Post"
+                android:textColor="@color/colorTextORIcon"
+                android:textSize="@dimen/text_btn_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_kontak" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+</ScrollView>
+

@@ -88,14 +88,13 @@ public class EditProfile extends AppCompatActivity implements EasyPermissions.Pe
             }
         });
 
-
-
         assert getSupportActionBar() != null;   //null check
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
         getSupportActionBar().setTitle("Edit Profile");
         mContext = this;
         loading = ProgressDialog.show(mContext, null, "Loading...", true, false);
         initComponents();
+        getProfile();
 
     }
 
@@ -110,6 +109,37 @@ public class EditProfile extends AppCompatActivity implements EasyPermissions.Pe
         etEmail = (EditText) findViewById(R.id.et_email_field);
         etNoTelp = (EditText) findViewById(R.id.et_notelp);
         btnUpdate = (Button) findViewById(R.id.btn_update);
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean anyError = false;
+                if (etName.getText().toString().equals("")){
+                    etName.setError("Field tidak boleh kosong");
+                    anyError = true;
+                }
+
+                if (etEmail.getText().toString().equals("")){
+                    etEmail.setError("Field tidak boleh kosong");
+                    anyError = true;
+                }
+
+                if (etNoTelp.getText().toString().equals("")){
+                    etNoTelp.setError("Field tidak boleh kosong");
+                    anyError = true;
+                }
+
+                if(!anyError){
+                    loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                    requestUpdate();
+                }
+
+            }
+        });
+
+    }
+
+    private void getProfile(){
         profile = getSharedPreferences("profile", Context.MODE_PRIVATE);
         String token = "Bearer "+profile.getString("access_token",null);
         mApiService = UtilsApi.getAPIServiceWithToken(token);
@@ -144,34 +174,6 @@ public class EditProfile extends AppCompatActivity implements EasyPermissions.Pe
                         loading.dismiss();
                     }
                 });
-
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean anyError = false;
-                if (etName.getText().toString().equals("")){
-                    etName.setError("Field tidak boleh kosong");
-                    anyError = true;
-                }
-
-                if (etEmail.getText().toString().equals("")){
-                    etEmail.setError("Field tidak boleh kosong");
-                    anyError = true;
-                }
-
-                if (etNoTelp.getText().toString().equals("")){
-                    etNoTelp.setError("Field tidak boleh kosong");
-                    anyError = true;
-                }
-
-                if(!anyError){
-                    loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-                    requestUpdate();
-                }
-
-            }
-        });
-
     }
 
     private void requestUpdate(){

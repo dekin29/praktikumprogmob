@@ -106,9 +106,12 @@ public class ProfileFragment extends Fragment {
                 tvNama.setText(nama);
                 tvEmail.setText(email);
 
-                Glide.with(getActivity())
-                        .load(UtilsApi.BASE_URL_API + "/profileimages/" + image)
-                        .into(ivUser);
+                if (getActivity() != null){
+                    Glide.with(getActivity())
+                            .load(UtilsApi.BASE_URL_API + "/profileimages/" + image)
+                            .into(ivUser);
+                }
+
 
                 loading.dismiss();
             }

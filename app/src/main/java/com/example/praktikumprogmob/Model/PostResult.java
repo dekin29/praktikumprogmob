@@ -14,4 +14,5 @@ public class PostResult {
     public ArrayList<Post> getPosts() {
         return posts;
     }
+
 }

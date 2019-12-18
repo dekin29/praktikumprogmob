@@ -12,10 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".DetailPost"></activity>
+        <activity android:name=".UpdatePost" />
+        <activity
+            android:name=".BuatPost"
+            android:theme="@style/ActionBar" />
         <activity
             android:name=".GantiPassword"
-            android:theme="@style/ActionBar">
-        </activity>
+            android:theme="@style/ActionBar" />
         <activity
             android:name=".EditProfile"
             android:theme="@style/ActionBar" />

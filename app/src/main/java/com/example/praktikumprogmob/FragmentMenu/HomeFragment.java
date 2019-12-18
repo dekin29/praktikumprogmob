@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.praktikumprogmob.APIHelper.BaseApiService;
 import com.example.praktikumprogmob.APIHelper.UtilsApi;
 import com.example.praktikumprogmob.Adapter.PostAdapter;
+import com.example.praktikumprogmob.BuatPost;
 import com.example.praktikumprogmob.EditProfile;
 import com.example.praktikumprogmob.Model.Post;
 import com.example.praktikumprogmob.Model.PostResult;
@@ -51,12 +52,13 @@ public class HomeFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), EditProfile.class);
+                Intent intent = new Intent(getActivity(), BuatPost.class);
                 startActivity(intent);
             }
         });
 
         return view;
+
     }
 
     @Override

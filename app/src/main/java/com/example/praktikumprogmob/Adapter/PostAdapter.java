@@ -39,11 +39,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
         Log.d("debug","Isi Adapter : "+dataList.get(position).getFoto());
         holder.tvJudul.setText(dataList.get(position).getJudul());
-        holder.tvNama.setText(dataList.get(position).getId_user());
+        holder.tvNama.setText(dataList.get(position).getUser_name());
         holder.tvCreated.setText(dataList.get(position).getCreated_at());
-        Glide.with(mContext)
-                .load(UtilsApi.BASE_URL_API+"/profileimages/"+dataList.get(position).getFoto())
-                .into(holder.ivFoto);
+        if(mContext != null){
+            Glide.with(mContext)
+                    .load(UtilsApi.BASE_URL_API+"/profileimages/"+dataList.get(position).getFoto())
+                    .into(holder.ivFoto);
+        }
+
     }
 
     @Override
