@@ -25,4 +25,5 @@
     <string name="ganti_password">Ganti Password</string>
     <string name="logout">Logout</string>
     <string name="telepon">Telepon</string>
+    <string name="read_file">This app needs access to your file storage so that it can read photos.</string>
 </resources>

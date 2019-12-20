@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E9E7DD"
-    tools:context=".EditProfile">
+    tools:context="com.example.praktikumprogmob.EditProfile">
 
     <RelativeLayout
         android:id="@+id/rellay1"
@@ -22,19 +22,19 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/circle_border">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_user"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_margin="9dp"
-                android:adjustViewBounds="true"
                 android:background="@drawable/circle"
                 android:padding="3dp"
-                android:scaleType="centerInside"
                 android:src="@drawable/ic_user" />
 
         </RelativeLayout>
 
         <ImageView
+            android:id="@+id/edit_img"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
@@ -114,26 +114,26 @@
         tools:ignore="Autofill" />
 
     <!--<EditText-->
-        <!--android:id="@+id/et_cpassword_field"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="@dimen/margin_default"-->
-        <!--android:layout_marginStart="@dimen/margin_auth"-->
-        <!--android:layout_marginEnd="@dimen/margin_auth"-->
-        <!--android:background="@drawable/bg_auth_field"-->
-        <!--android:drawableStart="@drawable/ic_password"-->
-        <!--android:drawablePadding="@dimen/padding_field"-->
-        <!--android:fontFamily="@font/nunito_sans_reguler"-->
-        <!--android:hint="@string/text_hint_cpassword_field"-->
-        <!--android:inputType="textPassword"-->
-        <!--android:padding="@dimen/padding_field"-->
-        <!--android:textColor="@color/colorPrimaryText"-->
-        <!--android:textColorHint="@color/colorSecondaryText"-->
-        <!--android:textSize="@dimen/text_body_size"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/et_password_field"-->
-        <!--tools:ignore="Autofill" />-->
+    <!--android:id="@+id/et_cpassword_field"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="@dimen/margin_default"-->
+    <!--android:layout_marginStart="@dimen/margin_auth"-->
+    <!--android:layout_marginEnd="@dimen/margin_auth"-->
+    <!--android:background="@drawable/bg_auth_field"-->
+    <!--android:drawableStart="@drawable/ic_password"-->
+    <!--android:drawablePadding="@dimen/padding_field"-->
+    <!--android:fontFamily="@font/nunito_sans_reguler"-->
+    <!--android:hint="@string/text_hint_cpassword_field"-->
+    <!--android:inputType="textPassword"-->
+    <!--android:padding="@dimen/padding_field"-->
+    <!--android:textColor="@color/colorPrimaryText"-->
+    <!--android:textColorHint="@color/colorSecondaryText"-->
+    <!--android:textSize="@dimen/text_body_size"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/et_password_field"-->
+    <!--tools:ignore="Autofill" />-->
 
     <Button
         android:id="@+id/btn_update"

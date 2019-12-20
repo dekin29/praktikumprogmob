@@ -3,11 +3,14 @@ package com.example.praktikumprogmob.Model;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.praktikumprogmob.Main2Activity;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
+
+    @SerializedName("profile_image")
+    @Expose
+    private String profile_image;
 
     @SerializedName("name")
     @Expose
@@ -46,6 +49,13 @@ public class User {
     }
 
 
+    public String getProfileimage() {
+        return profile_image;
+    }
+
+    public void setProfileimage(String profile_image) {
+        this.profile_image = profile_image;
+    }
 
     @SerializedName("id")
     @Expose
