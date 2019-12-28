@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,8 +25,15 @@ import com.example.praktikumprogmob.APIHelper.UtilsApi;
 import com.example.praktikumprogmob.Auth.LoginActivity;
 import com.example.praktikumprogmob.EditProfile;
 import com.example.praktikumprogmob.GantiPassword;
+import com.example.praktikumprogmob.MainActivity;
 import com.example.praktikumprogmob.Model.User;
 import com.example.praktikumprogmob.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;

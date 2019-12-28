@@ -33,6 +33,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -156,7 +158,24 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(!anyError){
                     loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-                    requestLogin();
+                    FirebaseInstanceId.getInstance().getInstanceId()
+                            .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                                    if (!task.isSuccessful()) {
+                                        Log.w("TESTAA", "getInstanceId failed", task.getException());
+                                        return;
+                                    }
+
+                                    // Get new Instance ID token
+                                    String token = task.getResult().getToken();
+
+                                    // Log and toast
+                                    String msg = token;
+                                    Log.d("TESTAA", msg);
+                                    requestLogin(token);
+                                }
+                            });
                 }
 
             }
@@ -178,8 +197,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void requestLogin(){
-        mApiService.loginRequest(etEmail.getText().toString(), etPassword.getText().toString())
+    private void requestLogin(String token){
+        mApiService.loginRequest(etEmail.getText().toString(),
+                etPassword.getText().toString(),token)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -217,6 +237,7 @@ public class LoginActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         } else {
+                            Toast.makeText(mContext, response.message(), Toast.LENGTH_SHORT).show();
                             loading.dismiss();
                         }
                     }
@@ -227,5 +248,9 @@ public class LoginActivity extends AppCompatActivity {
                         loading.dismiss();
                     }
                 });
+
+
     }
+
+
 }

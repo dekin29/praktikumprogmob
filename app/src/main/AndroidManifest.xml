@@ -11,6 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity android:name=".DetailPost"></activity>
         <activity android:name=".UpdatePost" />
@@ -36,6 +37,14 @@
             android:theme="@style/ActionBar" />
         <activity android:name=".Auth.RegisterActivity" />
         <activity android:name=".Auth.LoginActivity" />
+        <service android:name=".FirebaseCloudMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
     </application>
 
 </manifest>

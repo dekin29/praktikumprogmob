@@ -20,7 +20,9 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("api/login")
     Call<ResponseBody> loginRequest(@Field("email") String email,
-                                    @Field("password") String password);
+                                    @Field("password") String password,
+                                    @Field("fcm_token") String fcm_token
+                                    );
 
     // Fungsi ini untuk memanggil API register
     @FormUrlEncoded
