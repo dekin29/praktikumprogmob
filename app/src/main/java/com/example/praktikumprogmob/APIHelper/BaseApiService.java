@@ -24,6 +24,13 @@ public interface BaseApiService {
                                     @Field("fcm_token") String fcm_token
                                     );
 
+    @FormUrlEncoded
+    @POST("api/googleSignIn")
+    Call<ResponseBody> googleRequest(@Field("name") String nama,
+                                       @Field("email") String email,
+                                     @Field("fcm_token") String fcm_token
+    );
+
     // Fungsi ini untuk memanggil API register
     @FormUrlEncoded
     @POST("api/register")

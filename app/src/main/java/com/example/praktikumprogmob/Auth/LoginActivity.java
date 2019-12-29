@@ -98,8 +98,26 @@ public class LoginActivity extends AppCompatActivity {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
+                final GoogleSignInAccount account = task.getResult(ApiException.class);
+                FirebaseInstanceId.getInstance().getInstanceId()
+                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                                if (!task.isSuccessful()) {
+                                    Log.w("TESTAA", "getInstanceId failed", task.getException());
+                                    return;
+                                }
+
+                                // Get new Instance ID token
+                                String token = task.getResult().getToken();
+
+                                // Log and toast
+                                String msg = token;
+                                Log.d("TESTAA", msg);
+                                firebaseAuthWithGoogle(account,token);
+
+                            }
+                        });
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);
@@ -108,8 +126,9 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct,final String token) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+        loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -120,9 +139,57 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(mContext, MainActivity.class);
-                            startActivity(intent);
-                            finish();
+                            String name = user.getDisplayName();
+                            String email = user.getEmail();
+                            mApiService.googleRequest(name,email,token)
+                                    .enqueue(new Callback<ResponseBody>() {
+                                                 @Override
+                                                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                                     if (response.isSuccessful()) {
+                                                         loading.dismiss();
+                                                         try {
+                                                             JSONObject jsonRESULTS = new JSONObject(response.body().string());
+                                                             if (jsonRESULTS.getString("error").equals("false")) {
+                                                                 // Jika login berhasil maka data nama yang ada di response API
+                                                                 // akan diparsing ke activity selanjutnya.
+                                                                 Toast.makeText(mContext, "Berhasil Login", Toast.LENGTH_SHORT).show();
+                                                                 int id = jsonRESULTS.getJSONObject("user").getInt("id");
+                                                                 String token = jsonRESULTS.getJSONObject("user").getString("token");
+                                                                 Log.d("debug", "id : " + id + " Token :" + token);
+
+                                                                 //Save to SharedPreferences
+                                                                 SharedPreferences profile = getSharedPreferences("profile", Context.MODE_PRIVATE);
+                                                                 SharedPreferences.Editor profileEditor = profile.edit();
+                                                                 profileEditor.putInt("id", id);
+                                                                 profileEditor.putString("access_token", token);
+                                                                 profileEditor.apply();
+
+                                                                 Intent intent = new Intent(mContext, MainActivity.class);
+                                                                 intent.putExtra("id", id);
+                                                                 startActivity(intent);
+                                                                 finish();
+                                                             } else {
+                                                                 // Jika login gagal
+                                                                 String error_message = jsonRESULTS.getString("error_msg");
+                                                                 Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
+                                                             }
+                                                         } catch (JSONException e) {
+                                                             e.printStackTrace();
+                                                         } catch (IOException e) {
+                                                             e.printStackTrace();
+                                                         }
+                                                     } else {
+                                                         Toast.makeText(mContext, response.message(), Toast.LENGTH_SHORT).show();
+                                                         loading.dismiss();
+                                                     }
+                                                 }
+
+                                                 @Override
+                                                 public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                                     Log.e("debug", "onFailure: ERROR > " + t.toString());
+                                                     loading.dismiss();
+                                                 }
+                                             });
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
