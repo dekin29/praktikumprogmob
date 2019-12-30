@@ -1,6 +1,5 @@
 package com.example.praktikumprogmob.Adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,12 +21,13 @@ import com.example.praktikumprogmob.Model.Post;
 import com.example.praktikumprogmob.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder>{
-    private ArrayList<Post> dataList;
+public class Post2Adapter extends RecyclerView.Adapter<Post2Adapter.PostViewHolder>{
+    private List<Post> dataList;
     private Context mContext;
 
-    public PostAdapter(Context mContext, ArrayList<Post> dataList){
+    public Post2Adapter(Context mContext, List<Post> dataList){
         this.dataList = dataList;
         this.mContext = mContext;
     }

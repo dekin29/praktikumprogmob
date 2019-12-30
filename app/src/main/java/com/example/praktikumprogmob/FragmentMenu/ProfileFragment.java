@@ -116,7 +116,7 @@ public class ProfileFragment extends Fragment {
 
                 if (getActivity() != null){
                     Glide.with(getActivity())
-                            .load(UtilsApi.BASE_URL_API + "/profileimages/" + image)
+                            .load(UtilsApi.BASE_URL_API + image)
                             .into(ivUser);
                 }
 

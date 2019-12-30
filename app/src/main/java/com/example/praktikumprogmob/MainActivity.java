@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                         // Log and toast
                         String msg = token;
                         Log.d("TESTAA", msg);
-                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -69,12 +69,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.navigation_home:
                 fragment = new HomeFragment();
                 break;
-            case R.id.navigation_dashboard:
-                fragment = new PromoFragment();
-                break;
-            case R.id.navigation_notifications:
-                fragment = new NotificationFragment();
-                break;
+//            case R.id.navigation_dashboard:
+//                fragment = new PromoFragment();
+//                break;
+//            case R.id.navigation_notifications:
+//                fragment = new NotificationFragment();
+//                break;
             case R.id.navigation_profile:
                 fragment = new ProfileFragment();
                 break;

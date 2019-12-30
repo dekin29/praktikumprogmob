@@ -36,7 +36,7 @@
                     android:layout_marginEnd="@dimen/margin_auth">
 
                     <ImageView
-                        android:id="@+id/img_post"
+                        android:id="@+id/img_editpost"
                         android:layout_width="fill_parent"
                         android:layout_height="200dp"
                         android:scaleType="centerCrop"
@@ -46,10 +46,9 @@
             </RelativeLayout>
 
             <EditText
-                android:id="@+id/et_judul"
+                android:id="@+id/et_editkategori"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:lines="2"
                 android:layout_marginTop="@dimen/margin_auth"
                 android:layout_marginStart="@dimen/margin_auth"
                 android:layout_marginEnd="@dimen/margin_auth"
@@ -58,7 +57,7 @@
                 android:drawablePadding="@dimen/padding_field"
                 android:drawableStart="@drawable/ic_mail"
                 android:fontFamily="@font/nunito_sans_reguler"
-                android:hint="Title"
+                android:hint="Kategori"
                 android:inputType="text|textMultiLine"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/text_body_size"
@@ -69,7 +68,30 @@
                 tools:ignore="Autofill" />
 
             <EditText
-                android:id="@+id/et_deskripsi"
+                android:id="@+id/et_editjudul"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:lines="2"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginStart="@dimen/margin_auth"
+                android:layout_marginEnd="@dimen/margin_auth"
+                android:padding="@dimen/padding_field"
+                android:background="@drawable/bg_auth_field"
+                android:drawablePadding="@dimen/padding_field"
+                android:drawableStart="@drawable/ic_mail"
+                android:fontFamily="@font/nunito_sans_reguler"
+                android:hint="Judul"
+                android:inputType="text|textMultiLine"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_body_size"
+                android:textColorHint="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_editkategori"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/et_editdeskripsi"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:lines="5"
@@ -88,11 +110,11 @@
                 android:textColorHint="@color/colorSecondaryText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_judul"
+                app:layout_constraintTop_toBottomOf="@+id/et_editjudul"
                 tools:ignore="Autofill" />
 
             <EditText
-                android:id="@+id/et_kontak"
+                android:id="@+id/et_editkontak"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:lines="4"
@@ -111,11 +133,11 @@
                 android:textSize="@dimen/text_body_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_deskripsi"
+                app:layout_constraintTop_toBottomOf="@+id/et_editdeskripsi"
                 tools:ignore="Autofill" />
 
             <Button
-                android:id="@+id/btn_post"
+                android:id="@+id/btn_editpost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_auth"
@@ -130,7 +152,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_kontak" />
+                app:layout_constraintTop_toBottomOf="@+id/et_editkontak" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

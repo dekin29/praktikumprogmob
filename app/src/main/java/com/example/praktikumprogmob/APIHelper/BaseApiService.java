@@ -1,5 +1,6 @@
 package com.example.praktikumprogmob.APIHelper;
 
+import com.example.praktikumprogmob.Model.DetailPostResult;
 import com.example.praktikumprogmob.Model.PostResult;
 import com.example.praktikumprogmob.Model.User;
 
@@ -61,6 +62,54 @@ public interface BaseApiService {
     @GET("api/allpost")
     Call<PostResult> allPost();
 
+    @Multipart
+    @POST("api/newpost")
+    Call<ResponseBody> newPost(@Part("judul") RequestBody judul,
+                               @Part("deskripsi") RequestBody deskripsi,
+                               @Part("kontak") RequestBody kontak,
+                               @Part("id_kategori") RequestBody id_kategori,
+                               @Part MultipartBody.Part image,
+                               @Part("filename") RequestBody filename);
+
+    @Multipart
+    @POST("api/updatepost")
+    Call<ResponseBody> updatePost(@Part("id") RequestBody id,
+                                  @Part("judul") RequestBody judul,
+                                  @Part("deskripsi") RequestBody deskripsi,
+                                  @Part("kontak") RequestBody kontak,
+                                  @Part("id_kategori") RequestBody id_kategori,
+                                  @Part MultipartBody.Part image,
+                                  @Part("filename") RequestBody filename);
+
+    @FormUrlEncoded
+    @POST("api/deletepost")
+    Call<ResponseBody> deletePost(@Field("id") int id);
+
+    @FormUrlEncoded
+    @POST("api/detailpost")
+    Call<DetailPostResult> detailPost(@Field("id") int id);
+
+    @FormUrlEncoded
+    @POST("api/searchpost")
+    Call<ResponseBody> searchPost(@Field("keyword") String keyword);
+
+    @Multipart
+    @POST("api/newkomentar")
+    Call<ResponseBody> newKomentar(@Part("id_post") RequestBody id_post,
+                               @Part("komentar") RequestBody komentar);
+
+    @FormUrlEncoded
+    @POST("api/deletekomentar")
+    Call<ResponseBody> deleteKomentar(@Field("id") int id);
+
+    @FormUrlEncoded
+    @POST("api/notif/findby")
+    Call<ResponseBody> foundIt(@Field("post_id") int post_id);
+
+    @FormUrlEncoded
+    @POST("api/notif/claimed")
+    Call<ResponseBody> claimed(@Field("post_id") int post_id,
+                               @Field("user_id_claim") int user_id_claim);
 
 }
 

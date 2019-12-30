@@ -160,7 +160,7 @@ public class EditProfile extends AppCompatActivity implements EasyPermissions.Pe
                             etNoTelp.setText(notelp);
 
                             Glide.with(EditProfile.this)
-                                    .load(UtilsApi.BASE_URL_API+"/profileimages/"+image)
+                                    .load(UtilsApi.BASE_URL_API+image)
                                     .into(ivUser);
 
                         } else {

@@ -46,10 +46,9 @@
         </RelativeLayout>
 
         <EditText
-            android:id="@+id/et_judul"
+            android:id="@+id/et_kategori"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:lines="2"
             android:layout_marginTop="@dimen/margin_auth"
             android:layout_marginStart="@dimen/margin_auth"
             android:layout_marginEnd="@dimen/margin_auth"
@@ -58,7 +57,7 @@
             android:drawablePadding="@dimen/padding_field"
             android:drawableStart="@drawable/ic_mail"
             android:fontFamily="@font/nunito_sans_reguler"
-            android:hint="Title"
+            android:hint="Kategori"
             android:inputType="text|textMultiLine"
             android:textColor="@color/colorPrimaryText"
             android:textSize="@dimen/text_body_size"
@@ -67,6 +66,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rellay1"
             tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/et_judul"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:lines="2"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginStart="@dimen/margin_auth"
+                android:layout_marginEnd="@dimen/margin_auth"
+                android:padding="@dimen/padding_field"
+                android:background="@drawable/bg_auth_field"
+                android:drawablePadding="@dimen/padding_field"
+                android:drawableStart="@drawable/ic_mail"
+                android:fontFamily="@font/nunito_sans_reguler"
+                android:hint="Judul"
+                android:inputType="text|textMultiLine"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_body_size"
+                android:textColorHint="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_kategori"
+                tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/et_deskripsi"
